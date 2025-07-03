@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     try {
-      const res = await fetch('https://TU-BACKEND.onrender.com/api/contacto', {
+      const res = await fetch('https://inscripciones-cecati.onrender.com/api/contacto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
