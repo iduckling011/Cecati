@@ -210,10 +210,10 @@ footer {
 }
 
 /* Botones */
-button, .contacto {
-  background: #F23545;
-  width: 175;
+.contacto {
+    width: 175px;
   height: 72px;
+  background: #F23545;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -229,11 +229,30 @@ button, .contacto {
 
 button:hover, .contacto:hover {
   color: #fff;
-  background-color: #7b131b;
   transform: translateY(-3px) scale(1.04);
 }
 
+.contacto1 {
+  width: 175px;
+  height: 72px;
+    background: #F23545;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1em auto;
+}
+.contacto1:hover {
+    color: #fff;
+  transform: translateY(-3px) scale(1.04);
 
+}
 
 
 /* Nota: Para redirigir al hacer clic, usa un <a href="..."> o JS en el HTML */
