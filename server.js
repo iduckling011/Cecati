@@ -4,8 +4,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import inscripcionesRoutes from './inscripciones.js';
-import mensajesRoutes from './mensajes.js';
+import inscripcionesRoutes from './js/inscripciones.js';
+import mensajesRoutes from './js/mensajes.js';
 
 const app = express();
 app.use(cors());

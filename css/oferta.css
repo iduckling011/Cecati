@@ -284,7 +284,8 @@ h1, h2, h3 {
 }
 
 .encabezado {
-  padding: 40px;
+  padding-top: 30px;
+  padding-bottom: 25px;
 }
 
 a {
