@@ -1,48 +1,30 @@
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+// server.js
 
-dotenv.config();
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
+import inscripcionesRoutes from './inscripciones.js';
+import mensajesRoutes from './mensajes.js';
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // Conexión a MongoDB Atlas
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => console.log('✅ Conectado a MongoDB Atlas'))
-.catch(err => console.error('❌ Error de conexión:', err));
+.catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
-// Modelo actualizado
-const Contacto = mongoose.model('Contacto', {
-  nombre: String,
-  curp: String,
-  fecha_nacimiento: String,
-  sexo: String,
-  telefono: String,
-  correo: String,
-  domicilio: String,
-  municipio: String,
-  estado: String,
-  curso: String,
-  escolaridad: String,
-  difusion: String
-});
+// Usar las rutas
+app.use('/api', inscripcionesRoutes);
+app.use('/api', mensajesRoutes);
 
-// Ruta para guardar el formulario
-app.post('/api/contacto', async (req, res) => {
-  try {
-    const nuevo = new Contacto(req.body);
-    await nuevo.save();
-    res.status(200).json({ message: '✅ Inscripción guardada exitosamente' });
-  } catch (err) {
-    res.status(500).json({ message: '❌ Error al guardar inscripción', error: err });
-  }
-});
-
-// Servidor
+// Puerto
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Servidor escuchando en el puerto ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor escuchando en puerto ${PORT}`);
+});

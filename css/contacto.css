@@ -21,7 +21,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1em 2em;
-  background: #F23545;
+  background: var(--rojo);
   box-shadow: 0 2px 12px #0002;
 }
 
@@ -29,9 +29,14 @@ body {
   flex: 0 0 auto;
 }
 
+.logo {
+  width: 100px;
+  margin-bottom: 0;
+}
+
 .navbar-title {
-  flex: 1;
-  text-align: center;
+  flex: 1 1 auto;
+  text-align: left;
   font-size: 2em;
   font-weight: bold;
   color: #fff;
@@ -56,9 +61,8 @@ body {
 
 .navbar-links li a.active,
 .navbar-links li a:hover {
-  color: #4b350b;
+  color: var(--oro);
 }
-
 /* Logo */
 .logo {
   width: 80px;
@@ -68,7 +72,7 @@ body {
 /* Main */
 main.contacto {
   text-align: center;
-  padding: 2em 0 0 0;
+  padding: 3em 0 0 0; /* aumenta separación superior */
 }
 
 h1 {
@@ -84,7 +88,7 @@ h1 {
   align-items: flex-start;
   gap: 2em;
   max-width: 1200px;
-  margin: 0 auto 2em auto;
+  margin: 3em auto 2em auto; /* aumenta separación superior */
 }
 
 .contact-form {
@@ -105,6 +109,11 @@ h1 {
 .contact-form h2 {
   color: #F23545;
   margin-bottom: 1em;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 0;
 }
 
 .contact-form label {
@@ -139,16 +148,19 @@ h1 {
   font-size: 1em;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.3s, transform 0.2s;
   margin-top: 1em;
   box-shadow: 0 2px 8px #0002;
 }
 
 .contact-form button:hover {
-  background: #000000;
-  box-shadow: 0 4px 16px #A67C2E88;
+  background: #f00e21;
+  transform: translateY(-3px) scale(1.04);
 }
 
+.parrafo {
+text-align: left;
+}
 /* Información de contacto */
 .box-hd {
   background: #fff;
@@ -166,12 +178,6 @@ h1 {
   align-self: stretch;
 }
 
-.parrafo {
-  color: #731742;
-  font-size: 1em;
-  margin-bottom: 1em;
-  text-align: left;
-}
 
 .btn-especialidad {
   display: inline-block;
@@ -183,12 +189,14 @@ h1 {
   font-weight: bold;
   text-decoration: none;
   margin-top: 0.5em;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.3s, transform 0.2s;
+  text-align: center;
+  align-content: center;
 }
 
 .btn-especialidad:hover {
-  background: #000000;
-  color: #fff;
+  background: #f00e21;
+  transform: translateY(-3px) scale(1.04);
 }
 
 /* Mapa */
@@ -230,7 +238,7 @@ h1 {
 
 /* Footer */
 footer {
-  background: #000000;
+  background: #F23545;
   color: #ffffff;
   text-align: center;
   padding: 1em 0;
@@ -251,7 +259,7 @@ footer {
 }
 
 .footer-social a {
-  color: #000000;
+  color: #F23545;
 }
 
 .icon {

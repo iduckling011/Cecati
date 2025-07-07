@@ -14,14 +14,21 @@ body {
   margin: 0;
   padding: 0;
 }
-
+main{
+  border-radius: 16px;
+  margin: 2em auto;
+  max-width: 1200px;
+  background:#fff;
+  align-items: center;
+  box-shadow: 0 4px 24px #0003;
+}
 /* Navbar unificado */
 .navbar-flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1em 2em;
-  background: #F23545;
+  background: var(--rojo);
   box-shadow: 0 2px 12px #0002;
 }
 
@@ -29,9 +36,14 @@ body {
   flex: 0 0 auto;
 }
 
+.logo {
+  width: 100px;
+  margin-bottom: 0;
+}
+
 .navbar-title {
-  flex: 1;
-  text-align: center;
+  flex: 1 1 auto;
+  text-align: left;
   font-size: 2em;
   font-weight: bold;
   color: #fff;
@@ -56,24 +68,8 @@ body {
 
 .navbar-links li a.active,
 .navbar-links li a:hover {
-  color: #4b350b;
+  color: var(--oro);
 }
-
-/* Header */
-header {
-  background: #F23545;
-  color: #ffffff;
-  padding: 1em 0;
-  text-align: center;
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 2px 12px #0002;
-}
-
-.logo {
-  width: 80px;
-  margin-bottom: 10px;
-}
-
 /* Contenido principal */
 main {
   text-align: center;
@@ -162,7 +158,7 @@ main {
 
 /* Footer igual que en index */
 footer {
-  background: #000000;
+  background: #F23545;
   color: #ffffff;
   text-align: center;
   padding: 1em 0;
@@ -213,6 +209,9 @@ footer {
 .contacto {
     width: 175px;
   height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #F23545;
   color: #fff;
   border: none;
@@ -223,7 +222,6 @@ footer {
   font-weight: bold;
   transition: background 0.3s, transform 0.2s;
   text-decoration: none;
-  display: inline-block;
   margin: 1em auto;
 }
 
@@ -481,4 +479,46 @@ a:hover {
   .navbar-flex {
     position: relative;
   }
+}
+
+@media (max-width: 600px) {
+  .info-caja {
+    width: 100%;
+    max-width: 95%;
+  }
+
+  .navbar-title {
+    font-size: 1.5em;
+  }
+
+  .contacto,
+  .contacto1 {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    padding: 0.8em;
+    font-size: 1em;
+  }
+
+  .info-caja ul {
+    margin: 0 1em;
+  }
+
+  footer {
+    font-size: 0.9em;
+  }
+
+  .logo {
+    width: 60px;
+  }
+}
+
+.info-caja {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-extra {
+  margin-top: auto;
+  padding-bottom: 1em;
 }
