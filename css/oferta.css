@@ -283,6 +283,10 @@ h1, h2, h3 {
   color: #F23545;
 }
 
+.encabezado {
+  padding: 40px;
+}
+
 a {
   color: #ffffff;
   transition: color 0.2s;
