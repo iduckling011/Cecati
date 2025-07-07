@@ -7,6 +7,9 @@ import cors from 'cors';
 import inscripcionesRoutes from './js/inscripciones.js';
 import mensajesRoutes from './js/mensajes.js';
 
+app.use(inscripcionesRoutes);
+app.use(mensajesRoutes);
+
 const app = express();
 app.use(cors());
 app.use(express.json());
