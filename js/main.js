@@ -47,33 +47,3 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
-  // Formulario de contacto
-  const formContacto = document.querySelector('form#form-contacto');
-  if (formContacto) {
-    formContacto.addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      const formData = {
-        nombre: formContacto.nombre.value,
-        correo: formContacto.correo.value,
-        mensaje: formContacto.mensaje.value
-      };
-
-      try {
-        const res = await fetch('https://inscripciones-cecati.onrender.com/api/mensaje', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const data = await res.json();
-        alert(data.message || 'Mensaje enviado');
-        formContacto.reset();
-      } catch (err) {
-        alert('❌ Error al enviar el mensaje');
-        console.error(err);
-      }
-    });
-  }
-});
