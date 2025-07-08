@@ -21,6 +21,7 @@ main{
   background:#fff;
   align-items: center;
   box-shadow: 0 4px 24px #0003;
+  overflow: hidden; /* <-- Asegura que nada se salga del rectángulo blanco */
 }
 /* Navbar unificado */
 .navbar-flex {
@@ -541,6 +542,7 @@ ul.oferta-grid {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2em;
+  overflow: visible; /* Permite que las cajas se muestren completas dentro del main */
 }
 
 @media (min-width: 768px) {
@@ -554,7 +556,7 @@ ul.oferta-grid {
 
 .box {
   width: 100%;
-  height: 340px;
+  min-height: 340px; /* Permite crecer si hay más contenido */
   margin: -3rem 0 0;
   /* Empieza desacomodada y opaca */
   -webkit-transform: translateY(10vh) skew(60deg, -15deg) rotateX(40deg);
@@ -566,13 +568,15 @@ ul.oferta-grid {
   transition: all 300ms ease;
   background: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible; /* Permite mostrar todo el contenido aunque esté desacomodada */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  /* Evita que el contenido se oculte */
+  max-width: 100%;
+  word-break: break-word;
 }
-
 .box.animated {
   -webkit-transform: translateY(0) skew(0, 0) rotateX(0deg);
           transform: translateY(0) skew(0, 0) rotateX(0deg);
@@ -580,6 +584,8 @@ ul.oferta-grid {
   filter: none;
   margin: 0 0 1rem;
   transition: all 600ms cubic-bezier(.68,-0.55,.27,1.55);
+  min-height: 340px;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
