@@ -1,19 +1,26 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 app.use(cors());
-app.use(express.json()); // para recibir JSON del frontend
+app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Conectado a MongoDB Atlas'))
-  .catch(err => console.error('Error conectando a MongoDB:', err));
+// Conexión a MongoDB Atlas
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado a MongoDB Atlas'))
+.catch(err => console.error('❌ Error de conexión:', err));
 
-const FormSchema = new mongoose.Schema({
+// Esquema actualizado
+const Contacto = mongoose.model('Contacto', {
   nombre: String,
   curp: String,
-  fecha_nacimiento: Date,
+  fecha_nacimiento: String,
   sexo: String,
   telefono: String,
   correo: String,
@@ -25,17 +32,17 @@ const FormSchema = new mongoose.Schema({
   difusion: String
 });
 
-const Inscripcion = mongoose.model('Inscripcion', FormSchema);
-
-app.post('/api/inscribir', async (req, res) => {
+// Ruta para guardar el formulario
+app.post('/api/contacto', async (req, res) => {
   try {
-    const nuevaInscripcion = new Inscripcion(req.body);
-    await nuevaInscripcion.save();
-    res.status(200).json({ mensaje: 'Inscripción guardada con éxito' });
-  } catch (error) {
-    res.status(500).json({ error: 'Error al guardar' });
+    const nuevo = new Contacto(req.body);
+    await nuevo.save();
+    res.status(200).json({ message: '✅ Formulario guardado exitosamente' });
+  } catch (err) {
+    res.status(500).json({ message: '❌ Error al guardar', error: err });
   }
 });
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+// Servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Servidor escuchando en el puerto ${PORT}`));
