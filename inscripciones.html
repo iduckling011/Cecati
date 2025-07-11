@@ -5,12 +5,7 @@
   <title>CECATI 186 | Inscripciones</title>
   <link rel="stylesheet" href="css/inscripciones.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background: url('assets/post.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-  </style>
+
 </head>
 <body>
 <nav class="navbar-flex">
@@ -26,12 +21,12 @@
     <span></span>
   </div>
   <ul class="navbar-links">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="empresa.html">La Empresa</a></li>
-    <li><a href="oferta.html">Oferta Educativa</a></li>
-    <li><a href="inscripciones.html" class="active">Inscripciones</a></li>
-    <li><a href="noticias.html">Noticias</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="index.html">INICIO</a></li>
+    <li><a href="empresa.html">LA EMPRESA</a></li>
+    <li><a href="oferta.html">OFERTA EDUCATIVA</a></li>
+    <li><a href="inscripciones.html" class="active">INSCRIPCIONES</a></li>
+    <li><a href="noticias.html">NOTICIAS</a></li>
+    <li><a href="contacto.html">CONTACTO</a></li>
   </ul>
 </nav>
   <main>
@@ -43,7 +38,7 @@
         <li>Adjunta tus documentos.</li>
         <li>Recibe confirmación por correo.</li>
       </ol>
-      <form class="animate-slide" action="#" method="post">
+      <form class="animate-slide" id="form-inscripcion" action="#" method="post">
         <label>Nombre completo:
           <input type="text" name="nombre" required>
         </label>
@@ -76,8 +71,9 @@
         <label>Estado:
           <input type="text" name="estado" required>
         </label>
-        <label>Curso: 
-          <select name="curso" required>
+        <label for="curso">Curso: 
+          <select name="curso" id="curso" required>
+            <option value="">Selecciona</option>
             <option>Administración</option>
             <option>Alimentos y bebidas</option>
             <option>Artesanías y acabados</option>
@@ -119,18 +115,16 @@
   <footer>
     <div class="footer-social">
       <span>Síguenos</span>
-      <a href="https://www.facebook.com/" target="_blank">
+      <a href="https://www.facebook.com/share/1QYuyZs4pA/?mibextid=wwXIfr" target="_blank">
         <img src="assets/facebook.png" alt="Facebook" class="icon">
       </a>
-      <a href="https://www.instagram.com/" target="_blank">
+      <a href="https://www.instagram.com/cecati186?igsh=dDAwcDE5cTdib3Ny" target="_blank">
         <img src="assets/instagram.png" alt="Instagram" class="icon">
-      </a>
-      <a href="https://www.youtube.com/" target="_blank">
-        <img src="assets/youtube.png" alt="YouTube" class="icon">
       </a>
     </div>
     <p>&copy; 2025 CECATI 186 | Todos los derechos reservados.</p>
   </footer>
   <script src="js/main.js"></script>
+  <script src="js/inscripciones.js"></script>
 </body>
 </html>

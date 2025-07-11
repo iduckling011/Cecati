@@ -36,6 +36,7 @@ body {
 
 .navbar-logo {
   flex: 0 0 auto;
+  
 }
 
 .logo {
@@ -50,6 +51,7 @@ body {
   font-weight: bold;
   color: #fff;
   letter-spacing: 2px;
+  animation: showup-title-navbar 2.8s forwards;
 }
 
 .navbar-links {
@@ -59,6 +61,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+
 
 .navbar-links li a {
   color: #fff;
@@ -275,3 +279,4 @@ footer {
     border-radius: 50%;
   }
 }
+ 
