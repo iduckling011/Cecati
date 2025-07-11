@@ -381,35 +381,43 @@ a:hover {
     position: relative;
   }
 }
-/* Animación de entrada solo para logo y título en navbar */
-@import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
-.navbar-logo .logo {
-  opacity: 0;
-  animation: showup-logo-navbar 2.8s forwards;
+/* Solución para evitar scroll horizontal en móviles */
+html, body {
+  overflow-x: hidden;
 }
 
-.navbar-title.animated-title {
-  opacity: 0;
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 2em;
-  color: #fff;
-  animation: showup-title-navbar 2.8s forwards;
-}
+@media (max-width: 600px) {
+  main {
+    padding: 1.2em !important;
+    margin: 1em auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-@keyframes showup-logo-navbar {
-  0% { opacity: 0; transform: scale(0.7);}
-  40% { opacity: 1; transform: scale(1.1);}
-  70% { opacity: 1; transform: scale(1);}
-  100% { opacity: 1; transform: scale(1);}
-}
+  .ventajas-transparente {
+    padding: 1.5em 1em !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-@keyframes showup-title-navbar {
-  0% { opacity: 0; transform: translateY(40px);}
-  40% { opacity: 1; transform: translateY(0);}
-  100% { opacity: 1; transform: translateY(0);}
-}
+  .info-cajas {
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
 
+  .info-caja {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .info-caja img {
+    height: auto;
+    max-height: 160px;
+    object-fit: cover;
+  }
+}
