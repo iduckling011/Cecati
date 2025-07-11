@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const datos = Object.fromEntries(new FormData(inscripcionForm).entries());
 
       try {
-        const res = await fetch('https://inscripciones-cecati.onrender.com/api/contacto', {
+        const res = await fetch('https://cecati-dkvx.onrender.com/api/contacto', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(datos)
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const datos = Object.fromEntries(new FormData(contactoForm).entries());
 
       try {
-        const res = await fetch('https://inscripciones-cecati.onrender.com/api/mensaje', {
+        const res = await fetch('https://cecati-dkvx.onrender.com/api/mensaje', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(datos)
