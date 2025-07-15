@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 📬 Mensaje → /api/mensaje
+  // 📬 Mensaje → /api/mensaje (ahora solo envía correo)
   const contactoForm = document.getElementById('form-contacto');
   if (contactoForm) {
     contactoForm.addEventListener('submit', async e => {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const result = await res.json();
-        alert(result.message || '✅ Mensaje enviado correctamente');
+        alert(result.message || '✅ Tu mensaje fue enviado al correo');
         contactoForm.reset();
       } catch (err) {
         console.error('❌ Error al enviar mensaje:', err);

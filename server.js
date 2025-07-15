@@ -2,13 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer'; // ✅ añadido para enviar correo
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Conexión a MongoDB Atlas
+// ✅ Conexión a MongoDB Atlas (solo para inscripciones)
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -32,20 +33,9 @@ const InscripcionSchema = new mongoose.Schema({
   curso: String,
   escolaridad: String,
   difusion: String
-}, { collection: 'inscripcion' }); // 👈 Nombre exacto
+}, { collection: 'inscripcion' });
 
 const Inscripcion = mongoose.model('Inscripcion', InscripcionSchema);
-
-/* ==========================
-   📬 Esquema de Mensajes
-   ========================== */
-const MensajeSchema = new mongoose.Schema({
-  nombre: String,
-  correo: String,
-  mensaje: String
-}, { collection: 'Mensajes' }); // 👈 Con M mayúscula como pediste
-
-const Mensaje = mongoose.model('Mensaje', MensajeSchema);
 
 /* ==============================
    🚀 Ruta POST para inscripciones
@@ -61,15 +51,32 @@ app.post('/api/contacto', async (req, res) => {
 });
 
 /* ============================
-   📥 Ruta POST para mensajes
+   📬 Ruta POST para mensajes (solo email)
    ============================ */
 app.post('/api/mensaje', async (req, res) => {
+  const { nombre, correo, mensaje } = req.body;
+
   try {
-    const nuevoMensaje = new Mensaje(req.body);
-    await nuevoMensaje.save();
-    res.status(200).json({ message: '✅ Mensaje guardado exitosamente' });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.CORREO_RECEPTOR,
+        pass: process.env.CORREO_CLAVE
+      }
+    });
+
+    const mailOptions = {
+      from: correo,
+      to: process.env.CORREO_RECEPTOR,
+      subject: `📬 Nuevo mensaje de contacto de ${nombre}`,
+      text: `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: '✅ Tu mensaje fue enviado por correo' });
   } catch (err) {
-    res.status(500).json({ message: '❌ Error al guardar mensaje', error: err });
+    console.error('❌ Error al enviar el correo:', err);
+    res.status(500).json({ message: 'Hubo un problema al enviar el mensaje' });
   }
 });
 
