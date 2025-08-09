@@ -33,7 +33,7 @@ const InscripcionSchema = new mongoose.Schema({
   curso: String,
   escolaridad: String,
   difusion: String
-}, { collection: 'inscripcion' });
+}, { collection: 'Inscripcion' });
 
 const Inscripcion = mongoose.model('Inscripcion', InscripcionSchema);
 
